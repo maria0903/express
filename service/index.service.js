@@ -10,6 +10,12 @@ const endpointDog = 'https://dog.ceo/api/breeds/image/random';
  * @property {number} height
  */
 
+/**
+ * @typedef {Object} RandomDogImage
+ * @property {Object[]} RandomDogImage.message
+ * @property {string} RandomDogImage.message.url
+ */
+
 const LIMIT = 1;
 
 module.exports = {
@@ -44,6 +50,11 @@ module.exports = {
     throw new Error('Failed to get random cat image');
   },
 
+  /**
+   * 
+   * @param {*} params 
+   * @returns {Promise<RandomDogImage>}
+   */
   getRandomDogImage: async (params) => {
     const url = endpointDog + `/${params.limit || LIMIT}`
     const response = await axios.get(url);
